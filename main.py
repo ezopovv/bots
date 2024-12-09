@@ -60,9 +60,17 @@ soup = BeautifulSoup(webpage, "html.parser")
 #print(soup.prettify())
 
 price_row = soup.find(name="span", class_="aok-offscreen").get_text()
-print(price_row)
-price = (price_row.split())[0] #ATTENTION FOR € or $ or other sign
-price = float(price.replace(",", "."))
+print(f"price_row = {price_row}")
+price = price_row.replace("€", "")
+print("removing €:")
+print(price)
+price = (price.split())[0] #ATTENTION FOR € or $ or other sign
+print(f"splited price = {price}")
+
+price = price.replace(",", ".")
+print("replace , for .:")
+print(price)
+price = float(price)
 
 
 
